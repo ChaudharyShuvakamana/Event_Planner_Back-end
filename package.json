@@ -1,0 +1,26 @@
+{
+  "name": "event_planner",
+  "version": "1.0.0",
+  "description": "A website which helps you to create and plan a event",
+  "main": "app.js",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.19"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChaudharyShuvakamana/Event_Planner_Back-end.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ChaudharyShuvakamana/Event_Planner_Back-end/issues"
+  },
+  "homepage": "https://github.com/ChaudharyShuvakamana/Event_Planner_Back-end#readme"
+}
