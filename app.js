@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({
 
 
 app.use('/api/user', require('./router/userRouter'));
-
+app.use('/api/admin', require('./router/adminRouter'));
 app.use('/api/vendor', require('./router/vendorRoute'));
 
 
