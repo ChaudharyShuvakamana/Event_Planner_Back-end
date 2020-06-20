@@ -10,7 +10,9 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.19"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "jest": "^21.2.1"
+  },
   "scripts": {
     "test": "jest"
   },
