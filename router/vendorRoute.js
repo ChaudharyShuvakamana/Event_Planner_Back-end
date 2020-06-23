@@ -5,6 +5,8 @@ const auth = require('../middleware/auth');
 const vendorController = require('../controller/vendorController');
 
 router.post("/register",vendorController.addvendor)
+router.post("/login",vendorController.login)
+router.post("/checkemail",vendorController.checkEmailAvailabilityser)
 
 
 

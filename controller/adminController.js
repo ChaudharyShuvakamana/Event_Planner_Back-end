@@ -3,7 +3,7 @@ let jwt = require('jsonwebtoken');
 let config = require('../config');
 const bcrypt = require('bcrypt');
 
-//function for adding trip
+
 exports.addadmin =(req, res) => {
         var hashedPassword = bcrypt.hashSync(req.body.password, 8);
         

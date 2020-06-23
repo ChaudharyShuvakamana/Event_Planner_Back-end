@@ -48,7 +48,7 @@ exports.login =(req, res) => {
     });
   }
 
-//function for adding user
+
 exports.adduser =(req, res) => {
         var hashedPassword = bcrypt.hashSync(req.body.password, 8);
         
