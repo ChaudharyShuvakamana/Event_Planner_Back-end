@@ -1,49 +1,39 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-
-const vendorSchema = new Schema({
+const VendorSchema = new Schema({
     fullname : {
-        type : String,
-        required: [true, "Name field is required"]
-    },
-    location: {
-        type: String,
-       
-    },
-    phonenumber: {
         type : String,
         required: [true, "Name field is required"]
     },
     email : {
         type : String,
-        required: [true, "Name field is required"]
+        required : [true, "Email field is required"]
     },
-
-    businesstype : {
+    location : {
         type : String,
-        required: [true, "Name field is required"]
+        required : [true, "Location field is required"]
     },
-    
-    password: {
+    contact : {
+        type : Number,
+        required : [true, "Contact field is required"]
+    },
+    businessType : {
         type : String,
-        required : [true, "Name field is required"]
     },
-
-
-    profileImg : {
+    password : {
         type : String,
-        default : "avataaar.png",
+        required : [true, "Password field is required"]
     },
-    
     tokens: [{
         token: {
             type: String,
             required: true
         }
     }]
-});
 
-const vendor = mongoose.model('vendor', vendorSchema);
 
-module.exports = vendor;
+})
+
+const Vendor = mongoose.model('vendor', VendorSchema);
+module.exports = Vendor;

@@ -32,7 +32,7 @@ const UserSchema = new Schema({
 
     profileImg : {
         type : String,
-        default : "avataaar.png",
+        default : "man.png",
     },
     
     tokens: [{
