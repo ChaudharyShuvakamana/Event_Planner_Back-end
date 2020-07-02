@@ -42,8 +42,7 @@ class VendorsController{
                         message : 'Authentication successful',
                         token : token,
                         name : vendor.fullname,
-                        email : vendor.email,
-                        type : vendor.businessType
+                        email : vendor.email
                     });
 
             });
@@ -58,7 +57,6 @@ class VendorsController{
            email : req.body.email,
            location : req.body.location,
            contact : req.body.contact,
-           businessType : req.body.type,
            password : hashedPassword,
 
         },
@@ -78,8 +76,7 @@ class VendorsController{
                 message : "Registered Successfully!",
                 token : token,
                 name : vendor.fullname,
-                email : vendor.email,
-                type : vendor.businessType
+                email : vendor.email
             });
 
         }   

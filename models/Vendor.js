@@ -18,9 +18,6 @@ const VendorSchema = new Schema({
         type : Number,
         required : [true, "Contact field is required"]
     },
-    businessType : {
-        type : String,
-    },
     password : {
         type : String,
         required : [true, "Password field is required"]
