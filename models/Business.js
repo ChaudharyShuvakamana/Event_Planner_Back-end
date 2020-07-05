@@ -2,18 +2,6 @@ const mongoose = require('mongoose')
 
 const Schema = mongoose.Schema;
 
-const LocationSchema = new Schema({
-    name : {
-        type :String
-    },
-    lat : {
-        type : String
-    },
-    lng : {
-        type : String
-    }
-});
-
 const LinksSchema = new Schema({
     facebook : {
         type : String,
@@ -37,7 +25,9 @@ const BusinessSchema = new Schema({
     businessdesc : {
         type  : String,
     },
-    businesslocation : LocationSchema,
+    businesslocation : {
+        type : String,
+    },
 
     businesscontact : {
         type : String,
@@ -56,10 +46,6 @@ const BusinessSchema = new Schema({
     businessImage : {
         type : String,
         default : ""
-    },
-
-    album :  {
-        type : [String]
     },
 
 })

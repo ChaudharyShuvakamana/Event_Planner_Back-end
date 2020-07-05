@@ -42,14 +42,7 @@ class VenueController{
             nonVeg : req.body.nonVeg
         }
 
-        var location = {
-            name : req.body.address,
-            lat : req.body.lat,
-            lng : req.body.lng
-        }
-
         
-
         req.files.map(function(item){
             var imagename = item.filename;
             venue.create({
@@ -60,10 +53,9 @@ class VenueController{
                 venueContact :  req.body.contact,
                 venueCapacity :  capacity,
                 venuePricing :  pricing,
-                location:  location,
+                venuelocation:  req.body.location,
                 image :imagename,
-                availableDates : [],
-                album : []
+                availableDates : []
            },
            function(err, venue){
                if(err) return res.status(500).send(err);
@@ -177,58 +169,6 @@ class VenueController{
       
 
     }
-
-    addToAlbum(req, res){
-
-        console.log(req.files);
-        req.files.map(function(item, index){
-            
-            var imagename = item.filename;
-
-            var imagearray = [];
-
-            imagearray.push(imagename)
-
-            venue.findByIdAndUpdate(req.body.venueid,{ $push: { album : { "$each": imagearray }}}, function(err, venue){
-                if(err) return res.send({
-                    success : false,
-                    message : err.message
-                })
-
-              
-                var path = "public/images/venues/";
-                var dirname =  path + "/" + req.body.venueid;
-                var tmpfilename = "tmp" + imagename;
-                var fileExists =  fs.existsSync(dirname);
-                
-                if (fileExists) {
-             
-                        fs.rename('public/images/tmp/' + imagename, dirname + "/" + imagename, function(err){
-                            if(err) return res.status(400).send(err.message)
-                            if(index == (imagearray.length - 1)){
-                                return res.status(200).send("uploaded");
-                            }
-                            
-                        })
-                   
-                 }
-                 else{
-                  mkdirectory(dirname).then(function(){
-                  
-                         fs.rename('public/images/tmp/' + imagename, dirname + "/" + imagename, function(err){
-                             if(err) return res.status(400).send(err.message)
-                             if(index == (imagearray.length - 1)){
-                                return res.status(200).send("uploaded");
-                            }
-                         })
-                                
-                 })
-                 }
-            })
-        })
-     
-    }
-
     getDates(req, res){
 
         venue.findById(req.body.venueid, function(err, data){
@@ -272,27 +212,6 @@ class VenueController{
           
         })
 
-    }
-
-    deleteAlbum(req, res){
-        venue.findByIdAndUpdate(req.body.venueid, {$pull : {album : req.body.image}}, function(err, data){
-            if(err) return res.send({
-                success : false,
-                message : err.message
-            })
-
-            venue.findById(req.body.venueid, function(err, data){
-                if(err) return res.send({
-                    success : false,
-                    message : err.message
-                })
-                
-                return res.send({
-                    success : true,
-                    album : data.album
-                })
-            })
-        })
     }
 
     updateVenue(req, res){

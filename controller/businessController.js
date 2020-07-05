@@ -50,11 +50,6 @@ class BusinessController{
 
     addBusiness(req, res){
         console.log()
-        var location = {
-            name : req.body.address,
-            lat : req.body.lat,
-            lng : req.body.lng
-        }
         req.files.map(function(item){
             var imagename = item.filename;
       
@@ -65,11 +60,10 @@ class BusinessController{
             businesstype : req.body.type,
             businessdesc : req.body.desc,
             businesspricing : req.body.price,
-            businesslocation :  location,
+            businesslocation : req.body.location,
             businessImage: imagename,
             businesscontact : req.body.contact,
-            availableDates : [],
-            album : []
+            availableDates : []
 
         }, function(err , data){
             if(err) return res.send({
@@ -198,57 +192,6 @@ class BusinessController{
 
     }
 
-    addToAlbum(req, res){
-
-     
-        req.files.map(function(item, index){
-            
-            var imagename = item.filename;
-
-            var imagearray = [];
-
-            imagearray.push(imagename)
-
-            business.findByIdAndUpdate(req.body.businessid,{ $push: { album : { "$each": imagearray }}}, function(err, business){
-                if(err) return res.send({
-                    success : false,
-                    message : err.message
-                })
-
-              
-                var path = "public/images/business/";
-                var dirname =  path + "/" + req.body.businessid;
-                var tmpfilename = "tmp" + imagename;
-                var fileExists =  fs.existsSync(dirname);
-                
-                if (fileExists) {
-             
-                        fs.rename('public/images/tmp/' + imagename, dirname + "/" + imagename, function(err){
-                            if(err) return res.status(400).send(err.message)
-                            if(index == (imagearray.length - 1)){
-                                return res.status(200).send("uploaded");
-                            }
-                            
-                        })
-                   
-                 }
-                 else{
-                  mkdirectory(dirname).then(function(){
-                  
-                         fs.rename('public/images/tmp/' + imagename, dirname + "/" + imagename, function(err){
-                             if(err) return res.status(400).send(err.message)
-                             if(index == (imagearray.length - 1)){
-                                return res.status(200).send("uploaded");
-                            }
-                         })
-                                
-                 })
-                 }
-            })
-        })
-     
-    }
-
     getDates(req, res){
 
         business.findById(req.body.businessid, function(err, data){
@@ -285,28 +228,6 @@ class BusinessController{
 
     }
 
-    deleteAlbum(req, res){
-        business.findByIdAndUpdate(req.body.businessid, {$pull : {album : req.body.image}}, function(err, data){
-            if(err) return res.send({
-                success : false,
-                message : err.message
-            })
-
-            business.findById(req.body.businessid, function(err, data){
-                if(err) return res.send({
-                    success : false,
-                    message : err.message
-                })
-                
-                return res.send({
-                    success : true,
-                    album : data.album
-                })
-            })
-
-           
-        })
-    }
 
     updateBusiness(req, res){
      

@@ -21,17 +21,6 @@ const VenueCapacity = new Schema({
     }
 });
 
-const VenueLocation = new Schema({
-    name : {
-        type :String
-    },
-    lat : {
-        type : String
-    },
-    lng : {
-        type : String
-    }
-});
 
 const VenueSchema = new Schema({
     vendorid :   {type: Schema.Types.ObjectId, ref: 'vendor'},
@@ -48,12 +37,12 @@ const VenueSchema = new Schema({
     venueContact : {
         type : Number,
     },
-    
+     venuelocation : {
+         type : Number,
+     },
     venueCapacity : VenueCapacity,
 
     venuePricing : VenuePricing,
-
-    location: VenueLocation,
 
     availableDates : {
         type : [String]
@@ -62,9 +51,6 @@ const VenueSchema = new Schema({
     image : {
         type : String,
         default : ""
-    },
-    album :  {
-        type : [String]
     },
 
 
