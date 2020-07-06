@@ -2,14 +2,6 @@ const mongoose = require('mongoose')
 
 const Schema = mongoose.Schema;
 
-const LinksSchema = new Schema({
-    facebook : {
-        type : String,
-    },
-    instagram : {type : String},
-    website : {type : String}
-})
-
 const BusinessSchema = new Schema({
 
     vendorid :  {type: Schema.Types.ObjectId, ref: 'vendor'},
@@ -40,9 +32,6 @@ const BusinessSchema = new Schema({
     businesspricing : {
         type : String
     },
-
-    businessLink :LinksSchema, 
-
     businessImage : {
         type : String,
         default : ""

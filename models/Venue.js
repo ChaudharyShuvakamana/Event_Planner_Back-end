@@ -21,7 +21,6 @@ const VenueCapacity = new Schema({
     }
 });
 
-
 const VenueSchema = new Schema({
     vendorid :   {type: Schema.Types.ObjectId, ref: 'vendor'},
 
@@ -31,15 +30,17 @@ const VenueSchema = new Schema({
     venueType : {
         type : String,
     },
+
     venueDesc : {
         type : String
     },
     venueContact : {
         type : Number,
     },
-     venuelocation : {
-         type : Number,
-     },
+    venuelocation : {
+        type : String,
+    },
+    
     venueCapacity : VenueCapacity,
 
     venuePricing : VenuePricing,
