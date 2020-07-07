@@ -9,6 +9,7 @@ const cors = require('cors')
 app.use(cors())
 const venuerouter = require('./router/venue')
 
+const businessrouter = require('./router/business')
 app.use(express.json())
 app.use((req,res,next)=>{
     next();
@@ -17,6 +18,7 @@ app.use("/public/images", express.static(__dirname + '/public/images'))
 
 app.use(userrouter)
 app.use(venuerouter)
+app.use(businessrouter)
 app.use(cors)
 
 
