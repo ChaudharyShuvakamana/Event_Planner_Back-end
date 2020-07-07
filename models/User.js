@@ -1,48 +1,49 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const mongoose = require('mongoose')
+const jwt = require('jsonwebtoken')
+const userSchema = new mongoose.Schema({
 
+    fullname: {
+        type: String
+    },
+    address: {
+        type: String
+    },
+    email:{
+        type:String
 
-const UserSchema = new Schema({
-    firstname : {
-        type : String,
-        required: [true, "Name field is required"]
     },
-    lastname : {
-        type : String,
-        required: [true, "Name field is required"]
+    number: {
+        type: String
     },
-    location: {
-        type: String,
-       
-    },
-    phonenumber: {
-        type : String,
-        required: [true, "Name field is required"]
-    },
-    email : {
-        type : String,
-        required: [true, "Name field is required"]
-    },
-    
+
     password: {
-        type : String,
-        required : [true, "Name field is required"]
+        type: String
     },
-
-
-    profileImg : {
-        type : String,
-        default : "avataaar.png",
+    user_type:
+    {
+        type: String
     },
-    
     tokens: [{
         token: {
             type: String,
             required: true
         }
     }]
-});
 
-const User = mongoose.model('user', UserSchema);
+})
 
-module.exports = User;
+userSchema.statics.checkCrediantialsDb = async (email, password) => {
+    const user1 = await user.findOne({ email: email, password: password })
+    return user1;
+}
+
+userSchema.methods.generateAuthToken = async function () {
+    const user = this
+    var token = jwt.sign({ _id: user._id.toString() }, 'thisismynewcourse')
+    user.tokens = user.tokens.concat({ token: token })
+ 
+    await user.save() 
+    return token
+}
+const user = mongoose.model('user', userSchema)
+module.exports = user;
