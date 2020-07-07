@@ -1,61 +1,27 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
-
-
+const mongoose = require('mongoose')
+const venue= mongoose.model('venue',{
  
-const VenuePricing = new Schema({
-    veg : {
-        type : String,
-    },
-    nonVeg : {
-        type : String,
-    }
-});
+        venuename: {
+            type: String
+        },
+        venuetype :{
+            type: String
 
-const VenueCapacity = new Schema({
-    indoor : {
-        type : Number,
-    },
-    outdoor : {
-        type : Number,
-    }
-});
-
-const VenueSchema = new Schema({
-    vendorid :   {type: Schema.Types.ObjectId, ref: 'vendor'},
-
-    venueName :{
-        type : String
-    },
-    venueType : {
-        type : String,
-    },
-
-    venueDesc : {
-        type : String
-    },
-    venueContact : {
-        type : Number,
-    },
-    venuelocation : {
-        type : String,
-    },
+        },
+        phone:{
+            type:String
+        },
     
-    venueCapacity : VenueCapacity,
-
-    venuePricing : VenuePricing,
-
-    availableDates : {
-        type : [String]
-    },
-
-    image : {
-        type : String,
-        default : ""
-    },
-
-
-});
-const Venue = mongoose.model('venue', VenueSchema);
-
-module.exports = Venue;
+        address: {
+            type: String
+        },
+        email: {
+            type: String
+        },
+        description:{
+            type : String
+        },
+        Image: { type: String, 
+            required: true }
+    })
+    module.exports = venue

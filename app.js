@@ -1,37 +1,30 @@
+const express = require('express')
 require('./database/mongoose')
-const express = require('express');
+const app = express()
 const bodyParser = require('body-parser');
-const cors = require('cors');
-const app = express();
+app.use(bodyParser.urlencoded({extended:false}))
+const userrouter = require('./router/user')
 
-app.use(cors());
+const cors = require('cors')
+app.use(cors())
+const venuerouter = require('./router/venue')
 
-app.use(bodyParser.json());
+app.use(express.json())
+app.use((req,res,next)=>{
+    next();
+})
+app.use("/public/images", express.static(__dirname + '/public/images'))
 
-app.use(bodyParser.urlencoded({ 
-    extended: false
-  }));
-
-
-app.use('/api/user', require('./router/userRouter'));
-app.use('/api/admin', require('./router/adminRouter'));
-app.use('/api/vendor', require('./router/vendorRoute'));
-
-app.use('/api/vendor/business', require('./router/businessRouter'));
-
-app.use('/api/vendor/venue', require('./router/venueRouter'));
+app.use(userrouter)
+app.use(venuerouter)
+app.use(cors)
 
 
 
-app.use("/public", express.static(__dirname + '/public'));
 
 
-app.use(function(err, req, res, next){
-res.status(422).send({error: err.message});
+
+app.listen(4000,()=>{
+    console.log("server is running");
 });
-
-
-app.listen(process.env.port || 3000, function(){
-    console.log('Server runs at http://localhost:' + 3000);
-
-});
+ 
