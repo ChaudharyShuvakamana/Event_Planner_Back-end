@@ -1,32 +1,27 @@
 const express = require('express')
+const app = express();
 require('./database/mongoose')
-const app = express()
+const taskrouter = require('./router/userRouter')
+const path = require("path");
 const bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({extended:false}))
-const userrouter = require('./router/user')
+const publicdirectory= path.join(__dirname,'public');
+const cors = require('cors');
+const auth = require('./middleware/auth')
+app.use(cors());
 
-const cors = require('cors')
-app.use(cors())
-const venuerouter = require('./router/venue')
+const venue = require('./router/venue')
+const business = require('./router/business')
 
-const businessrouter = require('./router/business')
+
+app.use(bodyParser.urlencoded({extended:true}))
+app.use(express.static(publicdirectory));
 app.use(express.json())
-app.use((req,res,next)=>{
-    next();
-})
-app.use("/public/images", express.static(__dirname + '/public/images'))
-
-app.use(userrouter)
-app.use(venuerouter)
-app.use(businessrouter)
-app.use(cors)
+app.use(taskrouter)
 
 
+app.use(venue)
+app.use(business)
 
-
-
-
-app.listen(4000,()=>{
-    console.log("server is running");
-});
- 
+app.use(taskrouter)
+app.listen("3000");
+console.log('Server runs at http://localhost:' + 3000);
