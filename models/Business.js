@@ -1,30 +1,42 @@
 const mongoose = require('mongoose')
-const business= mongoose.model('business',{
- 
-        businessname: {
-            type: String
-        },
-        businesstype :{
-            type: String
+const business = mongoose.model('business', {    
 
-        },
-        phone:{
-            type:String
-        },
-        address: {
-            type: String
-        },
-        price:{
-            type: String
-        },
+    user_id: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'user',
+        trim:true
+    },
+    businesstype: {
+        type: String,
+        require:true,
+        trim: true
+    },
+    image: {
+        type: String,
+        require:true,
+        trim: true
+    },
+    businessname:{
+        type: String,
+        require:true
+    },
+    phone:{
+        type:String
+    },
 
-        email: {
-            type: String
-        },
-        description:{
-            type : String
-        },
-        Image: { type: String, 
-            required: true }
-    })
-    module.exports = business
+    address: {
+        type: String
+    },
+    email: {
+        type: String
+    },
+    price: {
+        type: String
+    },
+    description:{
+        type : String
+    },
+    
+  })
+
+  module.exports = business
