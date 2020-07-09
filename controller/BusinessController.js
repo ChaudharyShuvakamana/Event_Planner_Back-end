@@ -40,7 +40,6 @@ exports.findpost= async(req, res) => {
         })
       })
   }
-
      
     //function for getting post
 exports.findPostByUserId= async(req, res) => {
