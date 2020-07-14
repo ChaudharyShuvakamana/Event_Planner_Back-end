@@ -1,4 +1,4 @@
-const Users = require("../models/user")
+const Users = require("../models/Users")
 
 //function for adding trip
 exports.adduser =(req, res) => {

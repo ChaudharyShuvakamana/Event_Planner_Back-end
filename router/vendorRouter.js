@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const Users = require('../models/user')
+const Users = require('../models/Vendor')
 const auth = require('../middleware/auth');
-const UserController = require('../controller/userController')
+const UserController = require('../controller/vendorController')
 const upload = require('../controller/uploadfile');
 
 router.post("/register",UserController.adduser)

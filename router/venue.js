@@ -3,6 +3,11 @@ const auth = require('../middleware/auth');
 const router = express.Router()
 const upload = require('../controller/uploadfile');
 const postController = require("../controller/VenuesController")
+
+const commentController = require("../controller/BvenueController")
+router.post("/postcomment",commentController.addcomment)
+router.get("/getcommentbypostid/:id",commentController.getCommentByPostId)
+
 router.post("/createpost",[upload],postController.addpost)
 router.get("/findpost",postController.findpost)
 router.get("/findpostById/:_id",postController.findpostById)
