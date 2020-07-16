@@ -1,6 +1,6 @@
-var Business = require('../../models/Business');
+var Bookingbusiness = require('../../models/bookingbusiness');
 const mongoose = require('mongoose');
-const business = require('../../models/Business');
+const bookingbusiness = require('../../models/bookingbusiness');
 const url = 'mongodb://127.0.0.1:27017/blog';
 beforeAll(async() => {
     await mongoose.connect(url, {
@@ -11,8 +11,8 @@ beforeAll(async() => {
 afterAll(async() => {
     await mongoose.connection.close();
 });
-describe(' Testing of business Schema', () => {
-    it(' Testing of Adding business', () => {
+describe(' Testing of bookingbusiness Schema', () => {
+    it(' Testing of Adding bookingbusiness', () => {
         const business = {
             'businesstype': 'abc',
             'image': 'a.jpg',
@@ -24,9 +24,9 @@ describe(' Testing of business Schema', () => {
             'description':'xyz'
         };
 
-        return Business.create(business)
+        return Bookingbusiness.create(bookingbusiness)
             .then((business) => {
-                expect(business.email).toEqual('naran@gmail.com');
+                expect(bookingbusiness.email).toEqual('naran@gmail.com');
             });
     });
 });
@@ -34,7 +34,7 @@ describe(' Testing of business Schema', () => {
 
 it('to test the update', async () => {
 
-    return business.findOneAndUpdate({_id :Object('5f06cab9eb2aaa22a4c481e7')}, {$set : {businesstype:'xyz',image:'a.jpg',businessname:'xyz',
+    return bookingbusiness.findOneAndUpdate({_id :Object('5f06cab9eb2aaa22a4c481e7')}, {$set : {businesstype:'xyz',image:'a.jpg',businessname:'xyz',
     phone:'9849635014', address: 'ktm', email:'naran@gmail.com', price: '40$', description: 'xyzzz'}})
     .then((pp)=>{
         expect(pp.businesstype).toEqual('xyz'),
@@ -51,7 +51,7 @@ it('to test the update', async () => {
 });
   
 it('Testing of User Deletion', async() => {
-    const status = await business.deleteOne({ "_id": "5f06cab9eb2aaa22a4c481e7" });
+    const status = await bookingbusiness.deleteOne({ "_id": "5f06cab9eb2aaa22a4c481e7" });
     expect(status.ok).toBe(1);
 });
 
