@@ -16,7 +16,7 @@ const bookingvenue = mongoose.model('bookingvenue', {
         require:true,
         trim: true
     },
-    phone: {
+    number: {
         type: String,
         require:true,
         trim: true
@@ -42,8 +42,7 @@ const bookingvenue = mongoose.model('bookingvenue', {
         trim: true
     },
     venue_id: {
-        type: mongoose.Schema.ObjectId,
-        ref: 'venue',
+        type: String,
         trim:true
     }
     

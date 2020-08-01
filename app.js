@@ -13,7 +13,7 @@ app.use(cors());
 const venue = require('./router/venue')
 const business = require('./router/business')
 
-const commentrouter = require('./router/bvenueRouter')
+const bvenuerouter = require('./router/bvenueRouter')
 const bbusinessRouter = require('./router/bbusinessRouter')
 
 app.use(bodyParser.urlencoded({extended:true}))

@@ -1,6 +1,7 @@
 const express = require("express")
 const router = express.Router()
 const auth = require('../middleware/auth');
-const commentController = require("../controller/BvenueController")
-router.post("/postcomment",commentController.addcomment)
-router.get("/getcommentbypostid/:id",commentController.getCommentByPostId)
+const bvenueController = require("../controller/BvenueController")
+router.post("/postbvenue",bvenueController.addbvenue)
+router.get("/getbvenuebypostid/:id",bvenueController.getbvenueByPostId)
+router.delete("/delete/bvenuelist/:id",bvenueController.deleteById)

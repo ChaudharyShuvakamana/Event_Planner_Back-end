@@ -16,7 +16,7 @@ const bookingbusiness = mongoose.model('bookingbusiness', {
         require:true,
         trim: true
     },
-    phone: {
+    number: {
         type: String,
         require:true,
         trim: true
