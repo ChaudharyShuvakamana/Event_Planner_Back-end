@@ -17,6 +17,15 @@ exports.addbbusiness =(req, res) => {
             })
     
 }
+exports.findbusinessbook= async(req, res) => {
+    bbusiness.find().populate('user_id').then(function(findAllpost) {
+        
+         res.send(findAllpost).catch(function(e){
+             res.send(e)
+         })
+       })
+   }
+   
 exports.getbbusinessByPostId =(req, res) => {
     bbusiness.find({user_id:req.params.id}).populate('user_id').populate('business_id').then(function(findAllbbusiness) {
         res.send(findAllbbusiness).catch(function(e){

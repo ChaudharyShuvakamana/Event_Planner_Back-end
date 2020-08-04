@@ -19,6 +19,15 @@ exports.getbvenueByPostId =(req, res) => {
         })
       })
 }
+exports.findvenuebook= async(req, res) => {
+    bvenue.find().populate('user_id').then(function(findAllpost) {
+        
+         res.send(findAllpost).catch(function(e){
+             res.send(e)
+         })
+       })
+   }
+   
 exports.deleteById = (function(req,res){
     bvenue.findByIdAndDelete(req.params.id).then(function(){
         res.send("deleted");

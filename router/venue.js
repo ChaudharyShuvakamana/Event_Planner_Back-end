@@ -10,6 +10,7 @@ router.get("/getbvenuebypostid/:id",bvenueController.getbvenueByPostId)
 router.delete("/delete/bvenuelist/:id",bvenueController.deleteById)
 router.put("/updatebvenue/:id",bvenueController.updatebvenue)
 router.get("/singlebvenue/:id",bvenueController.getSinglebvenue)
+router.get("/findvenuebook",bvenueController.findvenuebook)
 
 router.post("/createpost",[upload],postController.addpost)
 router.get("/findpost",postController.findpost)

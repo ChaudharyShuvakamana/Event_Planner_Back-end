@@ -11,6 +11,8 @@ router.get("/getbbusinessbypostid/:id",BbusinessController.getbbusinessByPostId)
 router.delete("/delete/bbusinesslist/:id",BbusinessController.deleteById)
 router.put("/updatebbusiness/:id",BbusinessController.updatebbusiness)
 router.get("/singlebbusiness/:id",BbusinessController.getSinglebbusiness)
+router.get("/findbusinessbook",BbusinessController.findbusinessbook)
+
 
 router.post("/createbusiness",[upload],postController.addpost)
 router.get("/findbusiness",postController.findpost)
