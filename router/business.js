@@ -6,8 +6,13 @@ const postController = require("../controller/BusinessController")
 
 const BbusinessController = require("../controller/BbusinessController")
 
-router.post("/postbooking",BbusinessController.addcomment)
-router.get("/getbookingbybusinessid/:id",BbusinessController.getCommentByPostId)
+router.post("/postbbusiness",BbusinessController.addbbusiness)
+router.get("/getbbusinessbypostid/:id",BbusinessController.getbbusinessByPostId)
+router.delete("/delete/bbusinesslist/:id",BbusinessController.deleteById)
+router.put("/updatebbusiness/:id",BbusinessController.updatebbusiness)
+router.get("/singlebbusiness/:id",BbusinessController.getSinglebbusiness)
+router.get("/findbusinessbook",BbusinessController.findbusinessbook)
+
 
 router.post("/createbusiness",[upload],postController.addpost)
 router.get("/findbusiness",postController.findpost)

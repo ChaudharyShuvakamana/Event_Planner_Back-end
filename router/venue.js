@@ -4,9 +4,13 @@ const router = express.Router()
 const upload = require('../controller/uploadfile');
 const postController = require("../controller/VenuesController")
 
-const commentController = require("../controller/BvenueController")
-router.post("/postcomment",commentController.addcomment)
-router.get("/getcommentbypostid/:id",commentController.getCommentByPostId)
+const bvenueController = require("../controller/BvenueController")
+router.post("/postbvenue",bvenueController.addbvenue)
+router.get("/getbvenuebypostid/:id",bvenueController.getbvenueByPostId)
+router.delete("/delete/bvenuelist/:id",bvenueController.deleteById)
+router.put("/updatebvenue/:id",bvenueController.updatebvenue)
+router.get("/singlebvenue/:id",bvenueController.getSinglebvenue)
+router.get("/findvenuebook",bvenueController.findvenuebook)
 
 router.post("/createpost",[upload],postController.addpost)
 router.get("/findpost",postController.findpost)
