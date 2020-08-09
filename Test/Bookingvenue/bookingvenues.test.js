@@ -33,6 +33,27 @@ describe(' Testing of bookingvenue Schema', () => {
        
     });
 
+    it('to test the update bookingbusiness', async () => {
+
+        return bookingvenue.findByIdAndUpdate({_id :Object('5f2fc4d21cb7696e38a501b2')}, {$set : {user_id:'5e44def6d69dbe0860bddfa3',fullname:'naran',address:'xyz',
+        number:'9849635014', email:'naran@gmail.com', eventname: 'bday', from: '1staug', to: '3rdaug', venue_id: '5e44def6d69dbe0860bddfa3'}})
+        .then((pp)=>{
+            expect(pp.user_id).toEqual('5e44def6d69dbe0860bddfa3'),
+            expect(pp.fullname).toEqual('naran'),
+            expect(pp.address).toEqual('xyz'),
+            expect(pp.number).toEqual('9849635014'),
+            expect(pp.email).toEqual('naran@gmail.com'),
+            expect(pp.eventname).toEqual('bday'),
+            expect(pp.from).toEqual('1staug'),
+            expect(pp.to).toEqual('3rdaug'),
+            expect(ppvenue_id).toEqual('5e44def6d69dbe0860bddfa3')
+            
+    
+        })
+    });
+
+
+
 
 
 
