@@ -51,6 +51,10 @@ describe(' Testing of bookingvenue Schema', () => {
     
         })
     });
+    it('to test the delete bookingbussiness is working or not', async () => {
+        const status = await bookingbusiness.deleteMany();
+        expect(status.ok).toBe(1);
+});
 
 
 
