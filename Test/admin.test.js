@@ -33,3 +33,19 @@
     
 // // });
 
+it('to test the update', async () => {
+
+    return user.findOneAndUpdate({_id :Object('5f06cab9eb2aaa22a4c481e7')}, {$set : {firstname:'Admin',lastname:'Admin',location:'Nepal',
+    phonenumber:'987456321', email:'Admin@gmail.com', password: 'sam00sau35'}})
+    .then((pp)=>{
+        expect(pp.firstname).toEqual('xyz'),
+        expect(pp.lastname).toEqual('a.jpg'),
+        expect(pp.location).toEqual('xyz'),
+        expect(pp.phonenumber).toEqual('9849635014'),
+        expect(pp.email).toEqual('naran@gmail.com'),
+        expect(pp.password).toEqual('naran12')
+       
+        
+
+    })
+});
