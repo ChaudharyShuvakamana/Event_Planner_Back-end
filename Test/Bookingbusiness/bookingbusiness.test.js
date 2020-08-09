@@ -35,8 +35,8 @@ afterAll(async() => {
 
     // it('to test the update bookingbusiness', async () => {
 
-    //     return bookingbusiness.findByIdAndUpdate({_id :Object('5f2fb33001ad15516476bbe0')}, {$set : {user_id:'5e44def6d69dbe0860bddfa3',fullname:'abc',address:'ktm',
-    //     number:'9849635014', email:'naran@gmail.com', eventname: 'marriage', from: '1staug', to: '3rdaug', business_id: '5e44def6d69dbe0860bddfa3'}})
+    //     return bookingbusiness.findByIdAndUpdate({_id :Object('5f2fb33001ad15516476bbe0')}, {$set : {user_id:'5e44def6d69dbe0860bddfa3',fullname:'naran',address:'xyz',
+    //     number:'9849635014', email:'naran@gmail.com', eventname: 'bday', from: '1staug', to: '3rdaug', business_id: '5e44def6d69dbe0860bddfa3'}})
     //     .then((pp)=>{
     //         expect(pp.user_id).toEqual('5e44def6d69dbe0860bddfa3'),
     //         expect(pp.fullname).toEqual('naran'),
@@ -45,17 +45,17 @@ afterAll(async() => {
     //         expect(pp.email).toEqual('naran@gmail.com'),
     //         expect(pp.eventname).toEqual('bday'),
     //         expect(pp.from).toEqual('1staug'),
-    //         expect(pp.to).toEqual('2ndaug'),
+    //         expect(pp.to).toEqual('3rdaug'),
     //         expect(pp.business_id).toEqual('5e44def6d69dbe0860bddfa3')
             
     
     //     })
     // });
 
-    it('Testing of User Deletion', async() => {
-        const status = await venue.deleteOne({ "_id": "5f2fb33001ad15516476bbe0" });
+    it('to test the delete bookingbussiness is working or not', async () => {
+        const status = await bookingbusiness.deleteMany();
         expect(status.ok).toBe(1);
-    });
+});
 
 
 
