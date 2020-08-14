@@ -14,6 +14,7 @@ afterAll(async() => {
 describe(' Testing of business Schema', () => {
     it(' Testing of Adding business', () => {
         const business = {
+            
             'businesstype': 'abc',
             'image': 'a.jpg',
             'businessname': 'abc',
